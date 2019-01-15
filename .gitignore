@@ -3,6 +3,5 @@
 !.gitignore
 !readme.md
 !.gitkeep
-!*.tex
-!*.pdf
-!*/
+!*/*.pdf
+!*/*.tex
