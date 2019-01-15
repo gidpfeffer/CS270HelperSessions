@@ -1,7 +1,4 @@
 *
-!.gitattributes
-!.gitignore
-!readme.md
-!.gitkeep
-!*/*.pdf
-!*/*.tex
+!*/
+!*.tex
+!*.pdf
