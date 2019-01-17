@@ -98,4 +98,53 @@ Explain what DFS is and how it uses a last in first out data structure. \textbf{
 
 With branching factor $b$ (maximum number of successors), and a depth $d$, runtime is unbounded due to lack of completeness and space is $O(bd)$. With no cycles or visited state detection to prevent visiting cycles, runtime is $O(b^d)$.
 
+\subsection{Depth Limited DFS}
+
+Just like DFS, except never go deeper than some depth $d$. Keeping track of current depth is very easy.
+
+\subsection{Iterative Deepening}
+
+Run depth limited dfs for $n=1$, then depth limited dfs $n=2$, then depth limited dfs $n=3$, and so on until a solution is found.\\
+
+Uses the same space requirements as dfs. Really not as wasteful as it seems because almost all work is done at the last level of the tree.
+
+\section{Nonuniform Edge Weights}
+
+\subsection{Uniform Cost Search}
+
+Idea is as follows, always work on the lowest cost node. he cost of a node is defined as the total cost to get to that node, not the cost of the edge leading up to it. BFS is an implementation of this for uniform cost edges. Uniform cost search is equivalent to Dijkstras without visited state detection.
+
+\subsection{Searching Backwards From Goal}
+
+Sometimes, working backwards from the solution is an effective way to find the path to the solution. One such application is bidirectional search. Then the runtime goes from $O(b^{d})$ to $O(b^{\frac{d}{2}})$.
+
+\section{Heuristic Searches}
+
+\subsection{Heuristic}
+
+A heuristic function $h(n)$ gives an estimate of the instance from $n$ to the goal. $h(goal) = 0$. 
+
+\subsection{Greedy Best First Search}
+
+Greedy best first search always expands the node with the lowest $h$ value in the fringe.\\
+
+It would be good to draw an example up on the board here. Draw a graph $G = (E,V)$, give all edge weights, a start, a goal, and $h(n)$ for all $n \in V$.
+
+\subsection{A* Search}
+
+Takes into account both the cost accrued so far as well as the expected cost to goal (heuristic). Let $g(n)$ be the cost already incurred along path $n$. Expand nodes with lowest $g(n) + h(n)$.\\
+
+If your heuristic is bad, this may not give you the optimal solution. If $h(n) = 0$ for all $n \in V$, then this is uniform cost search, which we know is optimal.\\
+
+A heuristic is said to be \textbf{admissible} if it never overestimates the distance to the goal. It is either equal to or less than the actual cost to goal. Formally, if $n$ is the optimal solution reachable from $n'$, then 
+
+$$g(n) \geq g(n') + h(n')$$
+
+It can be proven that if the heuristic is admissible, then A* will return an optimal solution. Please see proof in slides if you would like to derive in helper hours.
+
+\begin{figure}[h]
+\includegraphics[width=8cm]{proof.png}
+\centering
+\end{figure}
+
 \end{document}
