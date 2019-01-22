@@ -7,7 +7,7 @@
  
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{Week of Jan 21}
+\rhead{Week of Jan 28}
 \lhead{CS 270 Helper Material}
 
 \setlength\parindent{0pt}
@@ -15,7 +15,69 @@
 
 \begin{document}
 
-Empty
+\section{A* Completeness}
 
+We previously discussed that A* is optimal, but is it complete?\\
+
+Recall, an algorithm is \textbf{complete} if it guarentees to find a solution when one exists.\\
+
+In a graph where there are infinitely many nodes, even if the path to the goal is finite, A* may never terminate. See example in slides for such a graph. Such an example generalizes to all algorithms that guarantee optimality. None are able to guarantee the completeness for such a graph.
+
+\section{Heuristic Consistency}
+
+A heuristic is consistent if the following hold: if one step takes us from $n$ to $n'$, then $h(n) \leq h(n') + cost(n,n')$ where $cost(n,n')$ is the cost to get from $n$ to $n'$. Similar to the triangle inequality. Can also be written as
+
+$$g(n) + h(n) \leq g(n') + h(n')$$
+
+All consistent heuristics are admissible, but not the other way around. When a consistent heuristic is used in A* search, A* will be optimally efficient. \textbf{Optimal efficiency} means that any other optimal algorithm must expand at least the nodes that A* expands. Meaning no other optimal algorithm can be defined which expands fewer nodes. Please see slides for proof.
+
+\section{Iterative Deepening A*}
+
+Also called \textbf{limited-cost depth first A*}. You define some cutoff cost $c$, then only expand to costs below that. If no solution is found, increase cost and repeat. During each iteration, use DFS. It is not guarenteed to find the optimal solution. Only a cost below $c$, for the $c$ you defined. This can take a lot of time (iterations), but uses less memory.\\
+
+Addresses memory concerns in a similar way that iterative deepening DFS substitutes BFS.
+
+\section{Picking a Heuristic}
+
+A heuristic $h$ is said to dominate a heuristic $h'$ is $h'(n) \geq h(n)$ for all $n$. Generally, the heuristic that dominates will find a solution faster.\\
+
+An good heuristic is easy to compute, and not much cheaper than solving the original problem.
+
+\section{Introduction to N Queens}
+
+N Queens is the problem of putting N queens on an N x N chess board such that no queen attacks any other queen on the board.
+
+\subsection{Search Formulation}
+
+\subsubsection{Successors}
+
+We can define a successor to be all valid ways of placing a queen in the next column (column 1 is the first column, then 2, then 3, and so on until N).
+
+\subsubsection{Goal State}
+
+A goal state is a state where all N queens have been placed.
+
+\subsection{Search Algorithm}
+
+Well, the depth of the solution is the same for all solutions. Because of this, there is no reason to use BFS. DFS is much better. The time complexity is the same as BFS and the space is much lower.
+
+\section{Constraint Satisfaction Problem (CSP)}
+
+A CSP is defined by:
+
+\begin{enumerate}
+	\item A set of variables, $x_1,x_2,x_3,...x_n$
+	\item A domain $D$ for each variable $x_i$
+	\item Constraints $c_1,c_2,...c_m$
+\end{enumerate}
+
+A constraint is specified by:
+
+\begin{enumerate}
+	\item A subset of variables
+	\item All the allowable joint assignments to those variables
+\end{enumerate}
+
+Goal: find a complete, consistent assignment
 
 \end{document}
