@@ -80,4 +80,38 @@ A constraint is specified by:
 
 Goal: find a complete, consistent assignment
 
+\subsection{Graph Coloring}
+
+Given a graph $G$, and a number of colors $n$, try to find a matching from colors to vertices such that each vertex can be assigned a color, and no two adjacent vertices have the same color.
+
+\subsection{Meeting Assignments}
+
+We are given a list of meetings, and a list of days. The constraints are of the form (meeting1, meeting2), and are interpreted to mean that meeting 1 and meeting2 cannot occur on the same day. How can this be reduced to graph coloring? Let the days represent the colors, make each meeting a node in the graph, and draw an edge between any meeting1 and meeting2 that appear in the constraints (this enforces that they cannot be matched to the same color, or in this case, occur on the same day).
+
+\subsection{Cryptarithmetic Puzzles}
+
+See examples from slides to remember that a cryptarithmetic puzzle is. Introduces the concept of auxiliary variables. Auxiliary variables are variables introduced into the problem, despite not being originally defined, to help with defining constraints.
+
+\section{How to Solve CSPs}
+
+\subsection{State Representation}
+
+State: define which variables are assigned, and which are unassigned, and for those assigned, what they are assigned to. This can be used to constitute a state.
+
+\subsection{Assigning Variables}
+
+CSPs satisfy \textbf{commutativity}, meaning the order in which variables are assigned does not matter. They can be applied in any order.
+
+\subsection{Tree Size}
+
+If you have $d$ variables which need to be assigned, and $b$ possible values that each variable can be, then the number of nodes in the search tree is proportional to $b^d$.
+
+\subsection{Searching}
+
+Can recursively call search, each time assigning a new variable. If success, return successful assignment. If fail, set next variable to a different value at the previous level. Once all assignments have been tried, return global failure. See slides for more in depth pseudo code.
+
+\subsection{Optimization}
+
+The general idea is to proactively determine which assignments are possible/impossible under our current assignment at each step, and is there a more efficient way to search through them?
+
 \end{document}
