@@ -12,9 +12,44 @@
 
 \setlength\parindent{0pt}
 
-
 \begin{document}
 
-First Commit
+\section{Game Playing}
+
+Most of the games we will study have the following properties:
+
+\begin{enumerate}
+	\item have two players
+	\item are \textit{zero-sum}: what one player wins, the other loses
+	\item have \textit{perfect information}: the entire state of the game is known to both players at all times
+\end{enumerate}
+
+An example of a game with \textit{imperfect information} is poker, where one player does not know the cards that the other player holds.
+
+\subsection{Game Tree}
+
+A game tree is used to display the potential outcomes of games. Nodes represent states, successors represent moves, and terminal nodes are assigned values based on who won/lost/tied. Below is an example of such a game tree.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{search_tree}
+\caption{Example Search Tree}
+\end{figure}
+
+For the full game playing example, please see slides.
+
+\subsection{Minimax}
+
+Assume that a positive utility final state implies Player 1 wins, and Player 2 loses, and a negative utility final state implies Player 1 loses, and Player 2 wins. When given the choice over successors, Player 1 will always pick the successor that guarantees the maximum utility. Conversely, Player 2 will always select the successor that guarantees the minimum utility. These calls can be made recursively by cycling between maximizing the result which was minimized based on the results that were maximized and so on. Please see \textbf{Game Playing Slides (p6)} for the pseudo code of a basic implementation.\\
+
+The implementation follows a depth first traversal. Therefore the space and time are equal to that of DFS. If you consider each move to be one person moves, and terminal nodes exist at a depth of $d$, and each player has $b$ possible moves they can make at any given turn, then:\\
+
+Space: $bd$
+
+Time: $b^d$
+
+\subsection{Alpha Beta Pruning}
+
+Maintains the best option for Player 1 ($\alpha$), and Player 2 ($beta$).
 
 \end{document}
