@@ -50,6 +50,16 @@ Time: $b^d$
 
 \subsection{Alpha Beta Pruning}
 
-Maintains the best option for Player 1 ($\alpha$), and Player 2 ($beta$).
+Maintains the best option for Player 1 ($\alpha$), and Player 2 ($beta$). Using this information players are able to skip over branches of the game tree. The extent to which branches are pruned depends on the order which branches are explored. More specifically, branches where $alpha \ge \beta$ can be pruned. Please see slides \textbf{Game Playing Slides p 12} for the pseudo code and to walk through a couple game trees. Students should be familiar doing alpha beta pruning on game trees in person using pencil and paper.
+
+\subsubsection{Benefits Of Alpha Beta}
+
+Without pruning, we need to evaluate $O(b^d)$ states. With random pruning, we need to examine $O(b^{\frac{3}{4}d})$, and if you are able to perfectly choose which branch to look at first, the number of states evaluated is $O(b^{\frac{1}{2}d})$. Under such a condition (perfect branch ordering), we can search to double the depth. This can make a significance difference in the game play achieved.
+
+\subsection{What if searching to the end of the game is unfeasible?}
+
+Under such a condition, it is not immediately obvious how to assign values to states (we don't know who will win!). In these cases, we use an evaluation function. An evaluation function, assigns a score to a state, which is intended to estimate the cost if both agents played optimally from that state onward. For example, each piece in chess is worth a certain amount of points.\\
+
+Let's say a node is \textbf{quiescent} if the evaluation function will not change rapidly in the near future. Can be thought of as a measure of stability. Choosing successors that lead to quiescent states can protect against stepping into a highly volatile state.
 
 \end{document}
