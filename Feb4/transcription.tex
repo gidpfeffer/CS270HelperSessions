@@ -62,4 +62,38 @@ Under such a condition, it is not immediately obvious how to assign values to st
 
 Let's say a node is \textbf{quiescent} if the evaluation function will not change rapidly in the near future. Can be thought of as a measure of stability. Choosing successors that lead to quiescent states can protect against stepping into a highly volatile state.
 
+\subsection{Games of Nature}
+
+Games of nature are the subset of games where a player makes a choice based on random chance. For example, given two successors $A$ and $B$, a nature player will pick successor $A$ with probability $P_A$ and will pick $B$ with probability $P_B$ such that $P_A + P_B = 1$. Rather than minimaxing the value of these choices, we take the weighted average of the successor where the weights are equal to the probability of each choice. 
+
+\section{Propositional Logic}
+
+\subsection{Syntax}
+
+A Backus–Naur Form, or Backus Normal Form, (BNF) grammar takes the following form\\
+
+$Symbol => P, Q, R, isRaining, etc$\\
+
+$Sentence => True$
+
+$\quad\quad\quad\quad\quad | \quad False$
+
+$\quad\quad\quad\quad\quad | \quad Symbol$
+
+$\quad\quad\quad\quad\quad | \quad NOT(Sentence)$
+
+$\quad\quad\quad\quad\quad | \quad (Sentence \quad AND \quad Sentence)$
+
+$\quad\quad\quad\quad\quad | \quad (Sentence \quad OR \quad Sentence)$
+
+$\quad\quad\quad\quad\quad | \quad (Sentence => Sentence)$
+
+\subsection{Semantics}
+
+A \textbf{model} specifies which of the proposition symbols are true and which are false.\\
+
+Given a model you should be able to determine if a sentence is true or false. Truth tables can be used to define the semantics of every operator.\\
+
+A sentence is a \textbf{tautology} if it is true for any setting of its propositional statements. For example $(\alpha \quad OR \quad True)$ will always evaluate to true, no matter what $\alpha$ is. Please see famous logical equivalences on slide 11 of the logic slides to see useful logical axioms and derived properties.
+
 \end{document}
