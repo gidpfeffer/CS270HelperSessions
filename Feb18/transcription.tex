@@ -14,7 +14,47 @@
 
 \begin{document}
 
-\section{First Commit}
+\section{First-Order Logic}
+
+\subsection{Elements of First Order Logic}
+
+First order logic is comprised of four main elements. They are as follows:\\
+
+\textbf{Objects}: can give these names such as Umbrella0,
+Person0, John, Earth\\
+
+\textbf{Relations}: Carrying(., .), IsAnUmbrella(.).
+Relations with one object are called unary relations\\
+
+\textbf{Functions}:are different than relations because they return objects. For example: Roommate(Person0)\\
+
+\textbf{Equality}: Roommate(Person0) = Person1
+
+\subsection{Reasoning}
+
+\textbf{Variables}: are used to refer to objects\\
+
+New operators “for all” and “there exists”, also known as \textbf{universal quantifier} and \textbf{existential quantifier}
+
+\subsection{Examples}
+
+Please see slide 7 and 8 for more practice on using these.
+
+\subsection{Substitution}
+
+SUBST replaces one or more variables with something else.\\
+
+For example, the substitution:\\
+
+SUBST({x/John}, IsHuman(x) $=>$ NOT(IsDog(x)))\\
+
+Results in:\\
+
+IsHuman(John) $=>$ NOT(IsDog(John))
+
+\subsection{Skolem Function}
+
+Existential quanitifers can be replaced using Skolem Functions. For example, when for all x, there exists a y that ...., you can instead Skolemize and say for all x, but this time, remove there ists a y and all occurrences of y get replaced with f(x).
 
 
 
